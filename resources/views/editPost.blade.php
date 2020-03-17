@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
@@ -54,7 +53,7 @@
                     </div>
                     <h5 class="card-title">Tags</h5>
                     <div class="form-group select2 js-example-basic-multiple">
-                        <select class="form-control" id="exampleFormControlTextarea1" rows="3">
+                        <select name="tags[]" class="form-control select-tags-basic-multiple" multiple="multiple">
                             @foreach ($tags as $tag )
                             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
@@ -73,7 +72,7 @@
 <script>
     $(document).ready(function() {
         $('.select-category').select2();
-        $('.js-example-basic-multiple').select2();
+        $('.select-tags-basic-multiple').select2();
     });
 </script>
 @endpush

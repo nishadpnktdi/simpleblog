@@ -135,6 +135,8 @@ class BlogController extends Controller
             'category_id' => $category
         ]);
 
+        $blog->tags()->sync($request->tags);
+
         return redirect()->back()->with('message', 'Post updated');
     }
 
