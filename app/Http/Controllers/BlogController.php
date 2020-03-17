@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\Category;
+use App\Tag;
 
 class BlogController extends Controller
 {
@@ -37,7 +38,8 @@ class BlogController extends Controller
     public function create()
     {
         $categories = Category::get();
-        return view('newBlog')->with('categories', $categories);
+        $tags = Tag::get();
+        return view('newBlog')->with(['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -61,6 +63,8 @@ class BlogController extends Controller
         $blog->content = $request->content;
         $blog->category_id = $request->category;
         $blog->save();
+
+        $blog->tags()->sync($request->tags);
 
         return redirect()->back()->with('message', 'Post published');
     }
@@ -96,7 +100,8 @@ class BlogController extends Controller
             abort(404);
         } else {
             $categories = Category::get();
-        return view('editPost', ['post' => $post, 'categories' => $categories]);
+            $tags = Tag::get();
+        return view('editPost', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
         }
     }
 

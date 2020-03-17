@@ -55,7 +55,9 @@
                     <h5 class="card-title">Tags</h5>
                     <div class="form-group select2 js-example-basic-multiple">
                         <select class="form-control" id="exampleFormControlTextarea1" rows="3">
-                            <option value="test"></option>
+                            @foreach ($tags as $tag )
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -69,9 +71,9 @@
 
 @push('scripts')
 <script>
-$(document).ready(function() {
-    $('.select-category').select2();
-    $('.js-example-basic-multiple').select2();
-});
+    $(document).ready(function() {
+        $('.select-category').select2();
+        $('.js-example-basic-multiple').select2();
+    });
 </script>
 @endpush

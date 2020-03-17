@@ -24,3 +24,5 @@ Route::resource('blogs', 'BlogController');
 Route::get('blogs', 'BlogController@index')->name('blogs');
 
 Route::resource('category', 'CategoryController');
+
+Route::resource('tag', 'TagController');

@@ -51,12 +51,20 @@
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        @error('category')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <h5 class="card-title">Tags</h5>
                     <div class="form-group select2 js-example-basic-multiple">
-                        <select class="form-control" id="exampleFormControlTextarea1" rows="3">
-                            <option value="test"></option>
+                        <select name="tags[]" class="form-control select-tags-basic-multiple" multiple="multiple">
+                            @foreach ($tags as $tag )
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
                         </select>
+                        @error('tags')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -68,9 +76,9 @@
 
 @push('scripts')
 <script>
-$(document).ready(function() {
-    $('.select-category').select2();
-    $('.js-example-basic-multiple').select2();
-});
+    $(document).ready(function() {
+        $('.select-category').select2();
+        $('.select-tags-basic-multiple').select2();
+    });
 </script>
 @endpush
