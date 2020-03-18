@@ -135,7 +135,11 @@ class BlogController extends Controller
             'category_id' => $category
         ]);
 
-        $blog->tags()->sync($request->tags);
+        if (isset($request->tags)) {
+            $blog->tags()->sync($request->tags);
+        } else {
+            $blog->tags()->sync(array());
+        }
 
         return redirect()->back()->with('message', 'Post updated');
     }
@@ -148,9 +152,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $post = new Blog();
+        $post = Blog::find($id);
 
-        $post->where('id', $id)->delete();
+        $post->delete();
 
         return [
             'message' => 'Successfully Deleted'
