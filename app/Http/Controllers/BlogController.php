@@ -136,9 +136,9 @@ class BlogController extends Controller
         ]);
 
         if (isset($request->tags)) {
-            $blog->tags()->sync($request->tags);
+            Blog::find($id)->tags()->sync($request->tags);
         } else {
-            $blog->tags()->sync(array());
+            Blog::find($id)->tags()->sync(array());
         }
 
         return redirect()->back()->with('message', 'Post updated');
