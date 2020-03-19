@@ -28,7 +28,7 @@
                     @enderror
                 </div> -->
 
-                <input type="hidden" class="form-control" name="author" placeholder="" value="{{ Auth::user()->name }}">
+                <input type="hidden" class="form-control" name="author" placeholder="" value="{{ Auth::user()->id }}">
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Content</label>

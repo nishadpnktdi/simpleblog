@@ -59,7 +59,7 @@ class BlogController extends Controller
 
         $blog = new Blog();
         $blog->title = $request->title;
-        $blog->author = $request->author;
+        $blog->author_id = $request->author;
         $blog->content = $request->content;
         $blog->category_id = $request->category;
         $blog->save();
@@ -79,10 +79,10 @@ class BlogController extends Controller
     {
         $post = new Blog();
         $post = $post->find($id);
-        if(empty($post)){
+        if (empty($post)) {
             abort(404);
         } else {
-        return view('showPost', ['post' => $post]);
+            return view('showPost', ['post' => $post]);
         }
     }
 
@@ -96,13 +96,13 @@ class BlogController extends Controller
     {
         $post = new Blog();
         $post = $post->where('id', $id)->first();
-        if(empty($post)){
+        if (empty($post)) {
             abort(404);
         } else {
             $categories = Category::get();
             $tags = Tag::get();
             $selectedTags = Blog::find($id)->tags;
-        return view('editPost', ['post' => $post, 'categories' => $categories, 'tags' => $tags, 'selectedTags' => $selectedTags]);
+            return view('editPost', ['post' => $post, 'categories' => $categories, 'tags' => $tags, 'selectedTags' => $selectedTags]);
         }
     }
 
@@ -131,7 +131,7 @@ class BlogController extends Controller
 
         $blog->where('id', $id)->update([
             'title' => $title,
-            'author' => $author,
+            'author_id' => $author,
             'content' => $content,
             'category_id' => $category
         ]);

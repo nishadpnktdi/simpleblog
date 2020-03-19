@@ -23,7 +23,7 @@
             <img src="https://picsum.photos/id/{{ $blog->id }}/1080/768" class="card-img-top" style="height: 10rem" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $blog->title }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $blog->author }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ $blog->author['name'] }}</h6>
                     <h6 class="card-subtitle mb-2 text-muted">{{ $blog->category['name'] }}</h6>
                     @auth
                     <a href="/blogs/{{ $blog->id }}/edit" class="card-link">Edit</a>
