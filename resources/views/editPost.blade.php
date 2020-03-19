@@ -23,8 +23,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Author</label>
-                    <input type="text" class="form-control" name="author" placeholder="eg: John Doe" value="{{ $post->author_id }}">
+                    <!-- <label for="exampleFormControlInput1">Author</label> -->
+                    <input type="hidden" class="form-control" name="author" placeholder="eg: John Doe" value="{{ $post->author_id }}">
                     @error('author')
                     <div class="text-danger">{{ $message }}</div>
                     @enderror
