@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
@@ -55,7 +56,7 @@
                     <div class="form-group select2 js-example-basic-multiple">
                         <select name="tags[]" class="form-control select-tags-basic-multiple" multiple="multiple">
                             @foreach ($tags as $tag )
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            <option value="{{ $tag->id }}" {{ $selectedTags->contains($tag->id) ? 'selected':'' }}>{{ $tag->name }}</option>
                             @endforeach
                         </select>
                     </div>

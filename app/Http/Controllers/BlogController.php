@@ -101,7 +101,8 @@ class BlogController extends Controller
         } else {
             $categories = Category::get();
             $tags = Tag::get();
-        return view('editPost', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
+            $selectedTags = Blog::find($id)->tags;
+        return view('editPost', ['post' => $post, 'categories' => $categories, 'tags' => $tags, 'selectedTags' => $selectedTags]);
         }
     }
 
