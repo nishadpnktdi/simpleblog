@@ -46,8 +46,8 @@
                         @foreach ($tags as $tag)
                         <li class="list-group-item">
                             <div class="d-flex justify-content-between">
-                                {{ $tag->name }}
-
+                                <a href='/tag/{{ $tag->id }}'>{{ $tag->name }}</a>
+@auth
                                 <div class="button-group d-flex">
                                     <button type="button" class="btn btn-sm btn-primary mr-1 edit-tag" data-toggle="modal" data-target="#editTagModal" data-id="{{ $tag->id }}" data-name="{{ $tag->name }}">Edit</button>
 
@@ -58,6 +58,7 @@
                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </div>
+                                @endauth
                             </div>
                         </li>
                         @endforeach
@@ -65,7 +66,7 @@
                 </div>
             </div>
         </div>
-
+@auth
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
@@ -87,6 +88,7 @@
                 </div>
             </div>
         </div>
+        @endauth
     </div>
 </div>
 

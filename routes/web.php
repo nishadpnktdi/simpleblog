@@ -27,3 +27,7 @@ Route::get('blogs', 'BlogController@index')->name('blogs');
 Route::resource('category', 'CategoryController');
 
 Route::resource('tag', 'TagController');
+
+Route::resource('profile', 'ProfileController');
+
+Route::get('profile', 'ProfileController@index')->name('profile');

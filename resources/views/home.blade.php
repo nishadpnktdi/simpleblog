@@ -7,8 +7,7 @@
     <div id="delete-message" class="d-none alert alert-danger"></div>
 
     <div class="row">
-        @if ($blogs->count() < 1 ) 
-        <span class="col-md-12 mb-3">
+        @if ($blogs->count() < 1 ) <span class="col-md-12 mb-3">
             <div class="alert alert-warning mt-3">
                 No data
             </div>
@@ -20,22 +19,26 @@
     <div class="col-md-4 mb-3">
         <a href="/blogs/{{ $blog->id }}">
             <div class="card" style="width: 18rem">
-            <img src="https://picsum.photos/id/{{ $blog->id }}/1080/768" class="card-img-top" style="height: 10rem" alt="...">
+                <img src="https://picsum.photos/id/{{ $blog->id }}/1080/768" class="card-img-top" style="height: 10rem" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $blog->title }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $blog->author['name'] }}</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ $blog->category['name'] }}</h6>
-                    @auth
-                    <a href="/blogs/{{ $blog->id }}/edit" class="card-link">Edit</a>
-
-                    <a class="card-link delete-blog" data-id="{{ $blog->id }}" href="">Delete</a>
-                    @endauth
-                </div>
-            </div>
         </a>
-    </div>
+        <a href="/">
+        <h6 class="card-subtitle mb-2 text-muted">{{ $blog->author['name'] }}</h6>
+        </a>
+        <a href="/">
+        <h6 class="card-subtitle mb-2 text-muted">{{ $blog->category['name'] }}</h6>
+        </a>
+        @auth
+        <a href="/blogs/{{ $blog->id }}/edit" class="card-link">Edit</a>
 
-    <!-- <div class="card-deck">
+        <a class="card-link delete-blog" data-id="{{ $blog->id }}" href="">Delete</a>
+        @endauth
+    </div>
+</div>
+</div>
+
+<!-- <div class="card-deck">
         <a href="/blogs/{{ $blog->id }}">
             <div class="card mr-3" style="width: 18rem">
                 <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
@@ -48,7 +51,7 @@
         </a>
     </div> -->
 
-    @endforeach
+@endforeach
 </div>
 
 @endsection
